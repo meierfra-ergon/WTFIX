@@ -24,6 +24,6 @@ from wtfix.protocol.spec import BaseProtocol
 
 class FIXProtocol(BaseProtocol, abc.ABCMeta):
     name = "FIX"
-    version = "4.4"
+    version = "T1.1"
     _msg_types = MsgType
     _tags = Tag

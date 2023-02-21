@@ -971,3 +971,4 @@ class Tag(_BaseTag):
     Nested3PartySubIDType = 954
     LegContractSettlMonth = 955
     LegInterestAccrualDate = 956
+    DefaultAppVerID = 1137

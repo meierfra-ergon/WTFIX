@@ -39,6 +39,7 @@ CONNECTIONS = {
         "SSL_ENABLED": bool(os.getenv("SSL_ENABLED", False)),
         "SSL_SKIP_VERIFY": bool(os.getenv("SSL_SKIP_VERIFY", False)),
         "SENDER": os.getenv("SENDER"),
+        "SENDER_SUB": os.getenv("SENDER_SUB"),
         "TARGET": os.getenv("TARGET"),
         "USERNAME": os.getenv("USERNAME", os.getenv("SENDER")),
         "PASSWORD": os.getenv("PASSWORD"),
@@ -46,7 +47,7 @@ CONNECTIONS = {
         "PIPELINE_APPS": [
             "wtfix.apps.utils.PipelineTerminationApp",
             "wtfix.apps.api.rest.RESTfulServiceApp",
-            "wtfix.apps.brokers.RedisPubSubApp",
+            #            "wtfix.apps.brokers.RedisPubSubApp",
             "wtfix.apps.admin.HeartbeatApp",
             "wtfix.apps.admin.AuthenticationApp",
             "wtfix.apps.admin.SeqNumManagerApp",

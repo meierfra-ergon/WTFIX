@@ -50,7 +50,7 @@ ENCODING_ERRORS = (
     "strict"  # Valid options are 'strict', 'ignore', 'replace', and any other
 )
 
-BEGIN_STRING = b"FIX.4.4"
+BEGIN_STRING = b"FIXT.1.1"
 
 SOH = b"\x01"  # Start of header / field delimiter
 SOH_INT = ord(SOH)  # Used for parsing raw byte streams.

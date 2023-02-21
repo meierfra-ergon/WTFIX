@@ -39,6 +39,7 @@ class EncoderApp(BaseApp):
         connection.protocol.Tag.MsgType,
         connection.protocol.Tag.MsgSeqNum,
         connection.protocol.Tag.SenderCompID,
+        connection.protocol.Tag.SenderSubID,
         connection.protocol.Tag.TargetCompID,
         connection.protocol.Tag.SendingTime,
         connection.protocol.Tag.DeliverToCompID,
@@ -65,6 +66,9 @@ class EncoderApp(BaseApp):
         if message.sender_id is None:
             message.sender_id = self.pipeline.apps[ClientSessionApp.name].sender
 
+        if message.sender_subid is None:
+            message.sender_subid = self.pipeline.apps[ClientSessionApp.name].sender_sub
+
         if message.target_id is None:
             message.target_id = self.pipeline.apps[ClientSessionApp.name].target
 
@@ -77,6 +81,9 @@ class EncoderApp(BaseApp):
             + settings.SOH
             + utils.encode(f"{connection.protocol.Tag.SenderCompID}=")
             + utils.encode(message.sender_id)
+            + settings.SOH
+            + utils.encode(f"{connection.protocol.Tag.SenderSubID}=")
+            + utils.encode(message.sender_subid)
             + settings.SOH
             + utils.encode(f"{connection.protocol.Tag.SendingTime}=")
             + utils.encode(str(message.SendingTime))
@@ -272,7 +279,7 @@ class DecoderApp(BaseApp):
             body_length=body_length,
             message_type=msg_type,
             message_seq_num=msg_seq_num,
-            encoded_body=data[msg_seq_num_end_tag + 1 : checksum_tag_start],
+            encoded_body=data[msg_seq_num_end_tag + 1: checksum_tag_start],
             checksum=checksum,
         )
         return message

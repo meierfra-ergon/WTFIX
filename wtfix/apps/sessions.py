@@ -45,6 +45,7 @@ class SessionApp(BaseApp):
         new_session: bool = False,
         sid_path: Path = None,
         sender: str = None,
+        sender_sub: str = None,
         *args,
         **kwargs,
     ):
@@ -61,7 +62,11 @@ class SessionApp(BaseApp):
         if sender is None:
             sender = self.pipeline.settings.SENDER
 
+        if sender_sub is None:
+            sender_sub = self.pipeline.settings.SENDER_SUB
+
         self.sender = sender
+        self.sender_sub = sender_sub
 
         self.reader = None
         self.writer = None
@@ -122,12 +127,13 @@ class ClientSessionApp(SessionApp):
         pipeline: BasePipeline,
         new_session: bool = False,
         sender: str = None,
+        sender_sub: str = None,
         target: str = None,
         *args,
         **kwargs,
     ):
         super().__init__(
-            pipeline, new_session=new_session, sender=sender, *args, **kwargs
+            pipeline, new_session=new_session, sender=sender, sender_sub=sender_sub, *args, **kwargs
         )
 
         if target is None:

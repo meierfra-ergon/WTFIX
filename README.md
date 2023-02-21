@@ -206,7 +206,8 @@ messages mean that you never need to deal with byte sequences directly.
     PORT=             # Required. The port on the FIX server to connect to
 
     SENDER=           # Required. SENDER_COMP_ID (tag 49).
-    TARGETD=          # Required. TARGET_COMP_ID (tag 56).
+    SENDER_SUB=       # Required. SENDER_SUB_ID (tag 50).
+    TARGET=           # Required. TARGET_COMP_ID (tag 56).
 
     USERNAME=         # Required. Username to use for Logon messages (tag 553).
     PASSWORD=         # Required. Password to use for logon messages (tag 554).

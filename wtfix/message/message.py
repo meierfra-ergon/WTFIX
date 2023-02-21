@@ -87,6 +87,17 @@ class FIXMessage(FieldMap, abc.ABC):
         self[connection.protocol.Tag.SenderCompID] = value
 
     @property
+    def sender_subid(self):
+        try:
+            return str(self[connection.protocol.Tag.SenderSubID])
+        except TagNotFound:
+            return None
+
+    @sender_subid.setter
+    def sender_subid(self, value):
+        self[connection.protocol.Tag.SenderSubID] = value
+
+    @property
     def target_id(self):
         try:
             return str(self[connection.protocol.Tag.TargetCompID])

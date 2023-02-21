@@ -34,6 +34,7 @@ class LogonMessage(OptimizedGenericMessage):
             (connection.protocol.Tag.MsgType, connection.protocol.MsgType.Logon),
             (connection.protocol.Tag.EncryptMethod, encryption_method),
             (connection.protocol.Tag.HeartBtInt, heartbeat_int),
+            (connection.protocol.Tag.DefaultAppVerID, 9)
         )
 
         if username is not None:
